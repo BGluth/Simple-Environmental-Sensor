@@ -1,0 +1,4 @@
+[submodule "lib/IoT_Library"]
+	path = lib/IoT_Library
+	url = E:/Programming/Embedded/IoT_Library/Code
+	branch = master
