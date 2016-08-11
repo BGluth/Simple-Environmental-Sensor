@@ -1,0 +1,42 @@
+#include "device_registration.hpp"
+#include "device_registration_local.hpp"
+
+#include "registration_api.h"
+
+#include "non_sensor_specific_functions.hpp"
+#include "Adafruit_TSL2561_registration.hpp"
+
+void register_all_functions()
+{
+	_register_non_sensor_specific_functions();
+	_register_sensor_specific_functions();
+}
+
+static void _register_non_sensor_specific_functions()
+{
+	IoTLib_register_upload_function(upload_function);
+	IoTLib_register_debug_function(debug_function);
+	IoTLib_register_store_last_upload_time_function(store_last_upload_time);
+	IoTLib_register_retrieve_last_upload_time_function(retrieve_last_upload_time);
+	IoTLib_register_retrieve_all_stored_unsent_sensor_data_function(retrieve_all_unsent_data);
+	IoTLib_register_get_stored_unsent_data_count_function(get_stored_unsent_data_count);
+	IoTLib_register_get_current_time_function(get_current_time);
+	IoTLib_register_convert_time_type_to_seconds_func(convert_time_type_to_seconds);
+}
+
+static void _register_sensor_specific_functions()
+{
+	_register_Adafruit_TSL2561();
+}
+
+static void _register_Adafruit_TSL2561()
+{
+	IoTLib_SensorID sensorID = IoTLib_register_sensor(adafruit_TSL2561_sensor_name);
+
+	IoTLib_register_sensor_init_function(sensorID, Adafruit_TSL2561_init);
+	IoTLib_register_sensor_poll_function(sensorID, Adafruit_TSL2561_poll);
+	IoTLib_register_sensor_store_unsent_data_function(sensorID, Adafruit_TSL2561_store_unsent_data);
+	IoTLib_register_sensor_generate_upload_payload_function(sensorID, Adafruit_TSL2561_generate_upload_payload);
+	IoTLib_register_sensor_retrieve_last_polled_time_function(sensorID, Adafruit_TSL2561_retrieve_last_polled_time);
+	IoTLib_register_sensor_store_last_polled_time_function(sensorID, Adafruit_TSL2561_store_last_polled_time);
+}
