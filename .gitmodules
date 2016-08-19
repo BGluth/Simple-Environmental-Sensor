@@ -2,3 +2,11 @@
 	path = lib/IoT_Library
 	url = E:/Programming/Embedded/IoT_Library/Code
 	branch = master
+[submodule "lib/Sensor_Libraries/Adafruit/Adafruit_Sensor"]
+	path = lib/Sensor_Libraries/Adafruit/Adafruit_Sensor
+	url = https://github.com/adafruit/Adafruit_Sensor.git
+	branch = master
+[submodule "lib/Sensor_Libraries/Adafruit/Adafruit_TSL2561"]
+	path = lib/Sensor_Libraries/Adafruit/Adafruit_TSL2561
+	url = https://github.com/adafruit/Adafruit_TSL2561.git
+	branch = master
