@@ -1,6 +1,6 @@
 #include "non_sensor_specific_functions.hpp"
 
-#include "Arduino.h"
+#include "Application.h"
 
 #include "user_settings.h"
 #include "public_structs.h"

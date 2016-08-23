@@ -1,14 +1,19 @@
-#include "Arduino.h"
+#include "application.h"
+
+
+SYSTEM_MODE(MANUAL);
 
 void setup()
 {
-	pinMode(LED_BUILTIN, OUTPUT);
+
+	WiFi.off();
+	pinMode(D7, OUTPUT);
 }
 
 void loop()
 {
-	digitalWrite(LED_BUILTIN, HIGH);
 	delay(1000);
-	digitalWrite(LED_BUILTIN, LOW);
 	delay(1000);
+	digitalWrite(D7, HIGH);
+	digitalWrite(D7, LOW);
 }
