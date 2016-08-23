@@ -1,11 +1,14 @@
-#include "EnvSnr_typedefs.hpp"
 #include "Adafruit_TSL2561_registration.hpp"
+
+#include <stdio.h>
+#include "EnvSnr_typedefs.hpp"
 
 #include "Adafruit_Sensor.h"
 #include "Adafruit_TSL2561_U.h"
 
 const char adafruit_TSL2561_sensor_name[17] = "Adafruit TSL2561";
-static const char adafruit_TSL2561_fake_url_payload[16] = "TSL2561 Payload";
+static const char adafruit_TSL2561_fake_url_payload_template[34] = "FAKE TSL2561 Payload -> value: %f";
+static char url_payload_buffer[40]; // Hacky, but it's for testing.
 
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 1);
 sensors_event_t event;
@@ -30,7 +33,10 @@ char* Adafruit_TSL2561_generate_upload_payload(void* rawSensorData)
 {
 	// TODO
 	// Need to temporarily cast away const for testing.
-	return (char*)&adafruit_TSL2561_fake_url_payload;
+	sensors_event_t* event = (sensors_event_t*)rawSensorData;
+	sprintf(url_payload_buffer, adafruit_TSL2561_fake_url_payload_template, event->light);
+
+	return url_payload_buffer;
 }
 
 EnvSnr_TIME_TYPE Adafruit_TSL2561_retrieve_last_polled_time()
