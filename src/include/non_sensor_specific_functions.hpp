@@ -2,7 +2,7 @@
 #define EnvSnr_NON_SENSOR_SPECIFIC_FUNCTIONS_H
 
 #include <stddef.h>
-#include "EnvSnr_typedefs.h"
+#include "EnvSnr_typedefs.hpp"
 
 struct IoTLib_RawIoTLib_RawSensorDataAndSensorID;
 

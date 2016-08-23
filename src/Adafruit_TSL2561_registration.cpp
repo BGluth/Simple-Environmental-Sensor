@@ -1,5 +1,5 @@
+#include "EnvSnr_typedefs.hpp"
 #include "Adafruit_TSL2561_registration.hpp"
-#include "EnvSnr_typedefs.h"
 
 #include "Adafruit_Sensor.h"
 #include "Adafruit_TSL2561_U.h"

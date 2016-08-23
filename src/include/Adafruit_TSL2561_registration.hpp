@@ -1,7 +1,7 @@
 #ifndef ADAFRUIT_TSL2561_H
 #define ADAFRUIT_TSL2561_H
 
-#include "EnvSnr_typedefs.h"
+#include "EnvSnr_typedefs.hpp"
 
 extern const char adafruit_TSL2561_sensor_name[17];
 void Adafruit_TSL2561_init();
