@@ -16,7 +16,17 @@ size_t WiringWrapper::send(uint8_t value)
 	return Wire.write(value);
 }
 
+size_t WiringWrapper::write(uint8_t value)
+{
+	return Wire.write(value);
+}
+
 int WiringWrapper::receive()
+{
+	return Wire.read();
+}
+
+int WiringWrapper::read()
 {
 	return Wire.read();
 }
