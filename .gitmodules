@@ -10,3 +10,7 @@
 	path = lib/Sensor_Libraries/Adafruit/Adafruit_TSL2561
 	url = https://github.com/adafruit/Adafruit_TSL2561.git
 	branch = master
+[submodule "lib/Sensor_Libraries/Adafruit/Adafruit_MCP9808"]
+	path = lib/Sensor_Libraries/Adafruit/Adafruit_MCP9808
+	url = https://github.com/adafruit/Adafruit_MCP9808_Library.git
+	branch = master
