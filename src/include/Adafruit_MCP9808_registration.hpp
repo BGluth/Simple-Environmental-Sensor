@@ -1,8 +1,9 @@
-#ifndef ADAFRUIT_TSL2561_H
-#define ADAFRUIT_TSL2561_H
+#ifndef ADAFRUIT_MCP9808_H
+#define ADAFRUIT_MCP9808_H
 
 #include "EnvSnr_typedefs.hpp"
 
+extern const char adafruit_MCP9808_sensor_name[17];
 void Adafruit_MCP9808_init();
 void* Adafruit_MCP9808_poll();
 void Adafruit_MCP9808_store_unsent_data(void* rawSensorData);

@@ -5,6 +5,7 @@
 
 #include "non_sensor_specific_functions.hpp"
 #include "Adafruit_TSL2561_registration.hpp"
+#include "Adafruit_MCP9808_registration.hpp"
 
 void register_all_functions()
 {
@@ -30,6 +31,7 @@ static void _register_non_sensor_specific_functions()
 static void _register_sensor_specific_functions()
 {
 	_register_Adafruit_TSL2561();
+	_register_Adafruit_MCP9808();
 }
 
 static void _register_Adafruit_TSL2561()
@@ -45,6 +47,22 @@ static void _register_Adafruit_TSL2561()
 
 	IoTLib_register_sensor_max_operating_temp(sensorID, 80);
 	IoTLib_register_sensor_min_operating_temp(sensorID, -30);
+	IoTLib_register_sensor_poll_frequency(sensorID, 1);
+}
+
+static void _register_Adafruit_MCP9808()
+{
+	IoTLib_SensorID sensorID = IoTLib_register_sensor(adafruit_MCP9808_sensor_name);
+
+	IoTLib_register_sensor_init_function(sensorID, Adafruit_MCP9808_init);
+	IoTLib_register_sensor_poll_function(sensorID, Adafruit_MCP9808_poll);
+	IoTLib_register_sensor_store_unsent_data_function(sensorID, Adafruit_MCP9808_store_unsent_data);
+	IoTLib_register_sensor_generate_upload_payload_function(sensorID, Adafruit_MCP9808_generate_upload_payload);
+	IoTLib_register_sensor_retrieve_last_polled_time_function(sensorID, Adafruit_MCP9808_retrieve_last_polled_time);
+	IoTLib_register_sensor_store_last_polled_time_function(sensorID, Adafruit_MCP9808_store_last_polled_time);
+
+	IoTLib_register_sensor_max_operating_temp(sensorID, 125);
+	IoTLib_register_sensor_min_operating_temp(sensorID, -40);
 	IoTLib_register_sensor_poll_frequency(sensorID, 1);
 }
 
