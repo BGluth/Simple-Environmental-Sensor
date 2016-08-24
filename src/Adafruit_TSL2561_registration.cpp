@@ -6,6 +6,8 @@
 #include "Adafruit_Sensor.h"
 #include "Adafruit_TSL2561_U.h"
 
+#include "application.h"
+
 const char adafruit_TSL2561_sensor_name[17] = "Adafruit TSL2561";
 static const char adafruit_TSL2561_fake_url_payload_template[34] = "FAKE TSL2561 Payload -> value: %f";
 static char url_payload_buffer[40]; // Hacky, but it's for testing.
@@ -15,6 +17,11 @@ sensors_event_t event;
 
 void Adafruit_TSL2561_init()
 {
+	if(!tsl.begin())
+	{
+		Serial.print("No TSL2561 detected ... Check your wiring! Halting!");
+		while(1);
+	}
 	tsl.enableAutoRange(true);
 }
 
