@@ -1,12 +1,11 @@
 #include "Adafruit_TSL2561_registration.hpp"
 
 #include <stdio.h>
+#include "application.h"
 #include "EnvSnr_typedefs.hpp"
 
 #include "Adafruit_Sensor.h"
 #include "Adafruit_TSL2561_U.h"
-
-#include "application.h"
 
 const char adafruit_TSL2561_sensor_name[17] = "Adafruit TSL2561";
 static const char adafruit_TSL2561_fake_url_payload_template[34] = "FAKE TSL2561 Payload -> value: %f";
@@ -19,8 +18,7 @@ void Adafruit_TSL2561_init()
 {
 	if(!tsl.begin())
 	{
-		Serial.print("No TSL2561 detected ... Check your wiring! Halting!");
-		while(1);
+		Serial.print("WARNING: No TSL2561 detected ... Check your wiring!");
 	}
 	tsl.enableAutoRange(true);
 }
@@ -39,7 +37,6 @@ void Adafruit_TSL2561_store_unsent_data(void* rawSensorData)
 char* Adafruit_TSL2561_generate_upload_payload(void* rawSensorData)
 {
 	// TODO
-	// Need to temporarily cast away const for testing.
 	sensors_event_t* event = (sensors_event_t*)rawSensorData;
 	sprintf(TSL2561_url_payload_buffer, adafruit_TSL2561_fake_url_payload_template, event->light);
 
