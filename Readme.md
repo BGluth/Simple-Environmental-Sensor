@@ -46,6 +46,7 @@ TODO
 There are two available options that you can choose to build this project and flash it onto a Particle device.
 
 You can either:
+
 1. Use either the Atom IDE setup that particle provides (either [locally downloaded](https://www.particle.io/products/development-tools/particle-local-ide) or  [cloud based](https://docs.particle.io/guide/getting-started/build/photon/#logging-in))
     - This is by far the simplest option to get going quick, but the downside is that you will be using an IDE that is pretty simple ATM (very limited auto-completion, etc.)
 2. Setup the toolchain for building firmware for Particle devices on your local machine. This will allow you to use whatever IDE you want that can be customized to run other programs.
