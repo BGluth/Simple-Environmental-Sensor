@@ -24,14 +24,12 @@ static void _register_non_sensor_specific_functions()
 	IoTLib_register_get_stored_unsent_data_count_function(get_stored_unsent_data_count);
 	IoTLib_register_get_current_time_function(get_current_time);
 	IoTLib_register_convert_time_type_to_seconds_func(convert_time_type_to_seconds);
-
-	IoTLib_register_temp_sensorid_and_raw_to_temp_function(0, _fake_raw_to_temp_func); // Hack until I get the actual temperature sensor going.
 }
 
 static void _register_sensor_specific_functions()
 {
-	_register_Adafruit_TSL2561();
 	_register_Adafruit_MCP9808();
+	_register_Adafruit_TSL2561();
 }
 
 static void _register_Adafruit_TSL2561()
@@ -61,12 +59,9 @@ static void _register_Adafruit_MCP9808()
 	IoTLib_register_sensor_retrieve_last_polled_time_function(sensorID, Adafruit_MCP9808_retrieve_last_polled_time);
 	IoTLib_register_sensor_store_last_polled_time_function(sensorID, Adafruit_MCP9808_store_last_polled_time);
 
+	IoTLib_register_temp_sensorid_and_raw_to_temp_function(sensorID, Adafruit_MCP9808_raw_to_temp);
+
 	IoTLib_register_sensor_max_operating_temp(sensorID, 125);
 	IoTLib_register_sensor_min_operating_temp(sensorID, -40);
 	IoTLib_register_sensor_poll_frequency(sensorID, 1);
-}
-
-static float _fake_raw_to_temp_func(void* data)
-{
-	return 25;
 }

@@ -57,3 +57,8 @@ void Adafruit_MCP9808_store_last_polled_time(EnvSnr_TIME_TYPE rawTime)
 {
 	// TODO
 }
+
+float Adafruit_MCP9808_raw_to_temp(void* rawSensorData)
+{
+	return *((float*) rawSensorData);
+}
